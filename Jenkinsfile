@@ -1,14 +1,16 @@
 pipeline {
   agent any
   stages {
-    stage('version') {
+    stage('compile') {
       steps {
-        bat 'python --version' // Checks Python version
+        // Compile the Java file
+        bat 'javac hello.java'
       }
     }
-    stage('hello') {
+    stage('run') {
       steps {
-        bat 'python p1.py' 
+        // Run the compiled Java program
+        bat 'java hello'
       }
     }
   }
